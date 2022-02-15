@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import "./Util.css"
 import Accordion from './Accordion';
+import {motion, useAnimation} from 'framer-motion'
+import {useInView} from 'react-intersection-observer'
 
 const Data =[
     {
@@ -26,10 +28,36 @@ const Data =[
 ];
 
 
+
+
 function Util() {
+
+    const {ref,inView} = useInView();
+
+const animation = useAnimation();
+
+useEffect(()=>{
+  console.log("use effect hook, aboutInView=",inView);
+  if(inView){
+    animation.start({
+      y:0,
+      opacity:1,
+      transition:{duration:0.6}
+    });
+  }
+  if(!inView){
+    animation.start({
+      y:200,
+      opacity:0.2,
+      transition:{duration:0.6}
+    })
+  }
+},[inView]);
+
+
   return (
         <div className='util-container'>
-            <div className='util'>
+            <motion.div className='util' animate={animation} ref={ref}>
                     <div className='util-section'>
                         <h1 className='util-heading'>Utilities</h1>
                             <div className='accoridon-container'>
@@ -53,7 +81,7 @@ function Util() {
                     </div>
                 </div>
 
-            </div>
+            </motion.div>
         </div>
   )
 }

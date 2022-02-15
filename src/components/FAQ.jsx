@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import "./FAQ.css"
 import Accordion from './Accordion';
+import {motion, useAnimation} from 'framer-motion'
+import {useInView} from 'react-intersection-observer'
 
 const FaqData =[
     {
@@ -23,9 +25,32 @@ const FaqData =[
 
 
 function FAQ() {
+
+    const {ref,inView} = useInView();
+
+    const animation = useAnimation();
+
+    useEffect(()=>{
+    console.log("use effect hook, aboutInView=",inView);
+    if(inView){
+        animation.start({
+        y:0,
+        opacity:1,
+        transition:{duration:1}
+        });
+    }
+    if(!inView){
+        animation.start({
+        y:200,
+        opacity:0,
+        transition:{duration:1}
+        })
+    }
+    },[inView]);
+
   return (
         <div className='faq-container'>
-            <div className='container'>
+            <motion.div className='container' initial={{y:200,opacity:0}} animate={animation} ref={ref}>
                 <div className='faq'>
                         <div className='faq-section'>
                             <h1 className='faq-heading'>FAQ</h1>
@@ -37,7 +62,7 @@ function FAQ() {
                         </div>
                         <div className='faq-add-image'><img src='images/logogreen.png' alt='logogreen'/></div>
                 </div>
-            </div>
+            </motion.div>
         </div>
   )
 }

@@ -1,10 +1,35 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import "./Roadmap.css"
+import {motion, useAnimation} from 'framer-motion'
+import {useInView} from 'react-intersection-observer'
 
 function Roadmap() {
+
+  const {ref,inView} = useInView();
+
+    const animation = useAnimation();
+
+    useEffect(()=>{
+    console.log("use effect hook, aboutInView=",inView);
+    if(inView){
+        animation.start({
+        y:0,
+        opacity:1,
+        transition:{duration:0.6}
+        });
+    }
+    if(!inView){
+        animation.start({
+        y:200,
+        opacity:0.2,
+        transition:{duration:0.6}
+        })
+    }
+    },[inView]);
+
   return (
       <div className='rm-total-container'>
-          <div className='roadmap-container'>
+          <motion.div className='roadmap-container' initial={{y:200,opacity:0}} animate={animation} ref={ref}>
               <div className='roadmap-heading'>
                 <div className='roadmap-heading-content'>
                   <div className='roadm-h'>
@@ -20,7 +45,7 @@ function Roadmap() {
                   </div>
                 </div>
               </div>
-          </div>
+          </motion.div>
 
           <div className='rm-container'>
             <div className='rm-box'>
