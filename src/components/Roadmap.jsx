@@ -37,7 +37,7 @@ function Roadmap() {
                     <p>This roadmap outlines our goals and where we want to take HypeAliens. We have a lot of ideas and concepts that we are working on.</p>
                   </div>
                   <div className='button-container'>
-                      <a href="https://www.youtube.com/watch?v=dkg3-NJ8rJs">
+                      <a href="https://discord.com/">
                         <button className='butt'><i class="fab fa-discord fa-sm"/>Discord</button>
                       </a>
                       <a href="https://twitter.com/explore">
