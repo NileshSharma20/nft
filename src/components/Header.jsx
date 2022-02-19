@@ -19,7 +19,7 @@ function Header() {
     if(!inView){
       animation.start({
         y:200,
-        opacity:0.2,
+        opacity:0,
         transition:{duration:1}
       })
     }
