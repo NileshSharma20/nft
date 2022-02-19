@@ -8,11 +8,15 @@ function Footer() {
             <div className='footer-col'>
                 <h1>Join us!</h1>
                 <div className='footer-buttons'>
-                    <a href="https://www.youtube.com/watch?v=dkg3-NJ8rJs">
+                    <a href="https://discord.com/">
                         <button className='butt'><i class="fab fa-discord fa-sm"/>Discord</button>
                     </a>
-                    <button className='butt'><i class="fab fa-twitter fa-sm"/>Twitter</button>
-                    <button className='butt'><i class='fab fa-instagram fa-sm' /> Instagram</button>
+                    <a href="https://twitter.com/explore">
+                        <button className='butt'><i class="fab fa-twitter fa-sm"/>Twitter</button>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <button className='butt'><i class='fab fa-instagram fa-sm' /> Instagram</button>
+                    </a>
                 </div>
             </div>
 
